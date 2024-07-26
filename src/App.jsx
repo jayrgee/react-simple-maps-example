@@ -17,11 +17,13 @@ function App() {
     { name: 'Munich', country: 'DE', coord: { lon: 11.5755, lat: 48.1374 } },
   ];
 
-  let [city, setCity] = useState(0);
+  let [location, setLocation] = useState(locations[0]);
 
   let handleCityChange = (e) => {
-    setCity(e.target.value);
+    setLocation(locations[e.target.value]);
   };
+
+  useEffect(() => {}, [location]);
 
   return (
     <>
@@ -35,7 +37,7 @@ function App() {
         </select>
       </div>
       <div>
-        <MapChart location={locations[city]} />
+        <MapChart location={location} />
       </div>
     </>
   );
